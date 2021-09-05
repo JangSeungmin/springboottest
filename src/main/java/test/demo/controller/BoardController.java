@@ -16,10 +16,11 @@ public class BoardController {
     public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
+
     @GetMapping("/") // main화면
     public String list(Model model) {
         List<BoardDto> boardDtoList = boardService.getBoardList();
-        model.addAttribute("postList",boardDtoList);
+        model.addAttribute("postList", boardDtoList);
         return "board/list.html";
     }
 
@@ -29,7 +30,7 @@ public class BoardController {
     }
 
     @PostMapping("/post")
-    public String write(BoardDto boardDto){
+    public String write(BoardDto boardDto) {
         boardService.savePost(boardDto);
         return "redirect:/";
     }
